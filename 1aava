@@ -1,0 +1,37 @@
+package avaliacao1;
+
+class Saraiva{
+    String Cliente, MetodoDeCartao;
+    private int SaldoDePontos=1, PontosCompraAtual;
+    double QuantiaGasta=2390.50;
+    
+    void Pontuacao(){
+       PontosCompraAtual = (int)QuantiaGasta/10;
+       SaldoDePontos += PontosCompraAtual;
+    }   
+    
+    
+    void MostraDadosSaraiva(){
+       System.out.println("LOJA SARAIVA");
+       System.out.println("Cliente:" + Cliente);
+       System.out.println("Quantia gasta: R$" + QuantiaGasta);
+       System.out.println("Pontos obtidos na compra:" + PontosCompraAtual);
+       System.out.println("Saldo de Pontos:" + SaldoDePontos);
+       
+    }   
+       
+    
+    
+    
+}
+public class Avaliacao1 {
+
+    public static void main(String[] args) {
+
+      Saraiva SaraivaPlus = new Saraiva();
+      
+      SaraivaPlus.Pontuacao();
+      SaraivaPlus.MostraDadosSaraiva();
+    }
+    
+}
