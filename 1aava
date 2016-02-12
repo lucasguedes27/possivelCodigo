@@ -3,9 +3,9 @@ package primeiraava;
 import javax.swing.JOptionPane;
 
 class Cliente{
-    String Nome, Senha;
+    private String Nome, Senha;
     private String Cpf,Rg,NomeBanco;
-    private int idade;
+    private int Idade;
    
       void CadastrarDados(){
     
@@ -13,8 +13,8 @@ class Cliente{
        JOptionPane.showConfirmDialog(null, "O banco escolhido foi " + NomeBanco + "?");
        Nome = JOptionPane.showInputDialog("Informe seu nome");
        JOptionPane.showConfirmDialog(null, "O seu nome é " + Nome + "?");
-       int idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua idade"));
-       JOptionPane.showConfirmDialog(null,"Você tem " + idade + " anos?");
+       Idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua idade"));
+       JOptionPane.showConfirmDialog(null,"Você tem " + Idade + " anos?");
        Cpf = JOptionPane.showInputDialog("Informe seu CPF:");
        JOptionPane.showConfirmDialog(null, "O seu CPF é " + Cpf + "?");
        Rg = JOptionPane.showInputDialog("Informe seu RG");
@@ -25,36 +25,36 @@ class Cliente{
     
       void MostrarDados(){
        
-        JOptionPane.showMessageDialog(null,"Banco: " + this.NomeBanco + "\nCliente: " +this.Nome + "\nCPF: " + this.Cpf + "\nRG: " +this.Rg); 
+        JOptionPane.showMessageDialog(null,"Banco: " + this.NomeBanco + "\nCliente: " +this.Nome + "\nIdade: " + Idade + "\nCPF: " + this.Cpf + "\nRG: " +this.Rg); 
     }
 }
 
 class ContaBancaria{
     private String NumConta, Agencia, EntraSenha;
     private double SaldoInicial, SaldoFinal;
-    double ValorSacado, ValorDepositado;
- 
-      void AcessarConta(){
+    
+    void AcessarConta(){
         Agencia = JOptionPane.showInputDialog("Informe o número da sua Agencia Bancaria:");
-        JOptionPane.showConfirmDialog(null, Agencia + "\nO número da sua Agencia está correto?");
+        JOptionPane.showConfirmDialog(null, this.Agencia + "\nO número da sua Agencia está correto?");
         NumConta = JOptionPane.showInputDialog("Informe o numero da sua conta:");
-        JOptionPane.showConfirmDialog(null, NumConta + "\nO número da sua conta está correto?");
+        JOptionPane.showConfirmDialog(null, this.NumConta + "\nO número da sua conta está correto?");
         JOptionPane.showInputDialog("Informe sua Senha");
         JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
         
       }
       
-       void Deposito(){
-          double ValorDepositado = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do deposito: R$"));
-            SaldoFinal = SaldoInicial + ValorDepositado;
+       void Deposito(double ValorDepositado){
+            ValorDepositado = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do deposito: R$"));
+            this.SaldoFinal = this.SaldoInicial + ValorDepositado;
            
        }
-       void Saque(){
-           if(SaldoInicial<ValorSacado ){
-            System.out.println("Nao e possivel realizar a operacao");
+       void Saque(double ValorSacado){
+           ValorSacado = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor que deseja sacar: R$"));
+           if(this.SaldoFinal<ValorSacado){
+            JOptionPane.showMessageDialog(null, "SEU SALDO NÃO PERMITE ESSA OPERAÇÃO");
         }
            else{
-            SaldoFinal = SaldoInicial - ValorSacado;  
+            this.SaldoFinal = this.SaldoInicial - ValorSacado;  
            }
        }
     
@@ -72,10 +72,13 @@ public class PrimeiraAva {
         
         ContaBancaria MinhaConta = new ContaBancaria();
         MinhaConta.AcessarConta();
-        MinhaConta.Deposito();
+        MinhaConta.Deposito(0);
+        MinhaConta.Saque(0);
         
     
     }
     
 }
+
+
 
