@@ -22,14 +22,54 @@ class Cliente{
        Senha = JOptionPane.showInputDialog("Escolha sua senha:");
       }
       
-      public String getNome(){
-          return Nome;
-      }
+     
+    String getNome() {
+        return this.Nome;
+    }
+
+    void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+      
+    String get(){
+        return this.Cpf;
+    }  
+    
+    void setCpf(String Cpf){
+        this.Cpf = Cpf;
+    }
+    
+    String getRg(){
+        return this.Rg;
+    }
+    
+    void setRg(String Rg){
+        this.Rg = Rg;
+    }
     
       void MostrarDados(){
        
         JOptionPane.showMessageDialog(null,"Banco: " + this.NomeBanco + "\nCliente: " +this.Nome + "\nIdade: " + Idade + "\nCPF: " + this.Cpf + "\nRG: " +this.Rg); 
     }
+}
+
+class AtualizarDados extends Cliente{
+    private String Nome2, Cpf2, Rg2;
+     @Override
+     void MostrarDados(){
+       JOptionPane.showMessageDialog(null, "Corrija seus dados a seguir, "
+               + "caso seja necessário:");
+       
+       this.Nome2 = JOptionPane.showInputDialog("Informe seu nome:");
+       super.setNome(Nome2);
+       this.Cpf2 = JOptionPane.showInputDialog("Informe seu CPF:");
+       super.setCpf(Cpf2);
+       this.Rg2 = JOptionPane.showInputDialog("Informe seu RG:");
+       super.setRg(Rg2);
+       JOptionPane.showMessageDialog(null,"Informações atualizadas com sucesso:"
+               + "\nCliente: " + this.Nome2 + "\nCPF: " + Cpf2 
+               + "\nRG: " + Rg2  ); 
+     }
 }
 
 class ContaBancaria{
@@ -70,7 +110,7 @@ class ContaBancaria{
       
       
 }
-    
+
 
 public class PrimeiraAva {
 
@@ -84,6 +124,9 @@ public class PrimeiraAva {
         NovoCliente.MostrarDados();
         NovoCliente.getNome();
         String DonoConta = NovoCliente.getNome();
+        
+        AtualizarDados NovosDados = new AtualizarDados();
+        NovosDados.MostrarDados();
         
         ContaBancaria MinhaConta = new ContaBancaria();
         MinhaConta.AcessarConta();
