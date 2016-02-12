@@ -1,37 +1,81 @@
-package avaliacao1;
+package primeiraava;
 
-class Saraiva{
-    String Cliente, MetodoDeCartao;
-    private int SaldoDePontos=1, PontosCompraAtual;
-    double QuantiaGasta=2390.50;
+import javax.swing.JOptionPane;
+
+class Cliente{
+    String Nome, Senha;
+    private String Cpf,Rg,NomeBanco;
+    private int idade;
+   
+      void CadastrarDados(){
     
-    void Pontuacao(){
-       PontosCompraAtual = (int)QuantiaGasta/10;
-       SaldoDePontos += PontosCompraAtual;
-    }   
+       NomeBanco = JOptionPane.showInputDialog("Em qual banco você deseja abrir sua conta?");
+       JOptionPane.showConfirmDialog(null, "O banco escolhido foi " + NomeBanco + "?");
+       Nome = JOptionPane.showInputDialog("Informe seu nome");
+       JOptionPane.showConfirmDialog(null, "O seu nome é " + Nome + "?");
+       int idade = Integer.parseInt(JOptionPane.showInputDialog("Informe sua idade"));
+       JOptionPane.showConfirmDialog(null,"Você tem " + idade + " anos?");
+       Cpf = JOptionPane.showInputDialog("Informe seu CPF:");
+       JOptionPane.showConfirmDialog(null, "O seu CPF é " + Cpf + "?");
+       Rg = JOptionPane.showInputDialog("Informe seu RG");
+       JOptionPane.showConfirmDialog(null, "Seu RG é " + Rg + "?");
+       Senha = JOptionPane.showInputDialog("Escolha sua senha:");
     
+     }
     
-    void MostraDadosSaraiva(){
-       System.out.println("LOJA SARAIVA");
-       System.out.println("Cliente:" + Cliente);
-       System.out.println("Quantia gasta: R$" + QuantiaGasta);
-       System.out.println("Pontos obtidos na compra:" + PontosCompraAtual);
-       System.out.println("Saldo de Pontos:" + SaldoDePontos);
+      void MostrarDados(){
        
-    }   
-       
-    
-    
+        JOptionPane.showMessageDialog(null,"Banco: " + this.NomeBanco + "\nCliente: " +this.Nome + "\nCPF: " + this.Cpf + "\nRG: " +this.Rg); 
+    }
+}
+
+class ContaBancaria{
+    private String NumConta, Agencia, EntraSenha;
+    private double SaldoInicial, SaldoFinal;
+    double ValorSacado, ValorDepositado;
+ 
+      void AcessarConta(){
+        Agencia = JOptionPane.showInputDialog("Informe o número da sua Agencia Bancaria:");
+        JOptionPane.showConfirmDialog(null, Agencia + "\nO número da sua Agencia está correto?");
+        NumConta = JOptionPane.showInputDialog("Informe o numero da sua conta:");
+        JOptionPane.showConfirmDialog(null, NumConta + "\nO número da sua conta está correto?");
+        JOptionPane.showInputDialog("Informe sua Senha");
+        JOptionPane.showMessageDialog(null, "Dados inseridos com sucesso");
+        
+      }
+      
+       void Deposito(){
+          double ValorDepositado = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do deposito: R$"));
+            SaldoFinal = SaldoInicial + ValorDepositado;
+           
+       }
+       void Saque(){
+           if(SaldoInicial<ValorSacado ){
+            System.out.println("Nao e possivel realizar a operacao");
+        }
+           else{
+            SaldoFinal = SaldoInicial - ValorSacado;  
+           }
+       }
     
 }
-public class Avaliacao1 {
+    
 
+public class PrimeiraAva {
+
+    
     public static void main(String[] args) {
-
-      Saraiva SaraivaPlus = new Saraiva();
-      
-      SaraivaPlus.Pontuacao();
-      SaraivaPlus.MostraDadosSaraiva();
+    
+        Cliente NovoCliente = new Cliente();
+        NovoCliente.CadastrarDados();
+        NovoCliente.MostrarDados();
+        
+        ContaBancaria MinhaConta = new ContaBancaria();
+        MinhaConta.AcessarConta();
+        MinhaConta.Deposito();
+        
+    
     }
     
 }
+
