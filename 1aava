@@ -20,8 +20,11 @@ class Cliente{
        Rg = JOptionPane.showInputDialog("Informe seu RG");
        JOptionPane.showConfirmDialog(null, "Seu RG é " + Rg + "?");
        Senha = JOptionPane.showInputDialog("Escolha sua senha:");
-    
-     }
+      }
+      
+      public String getNome(){
+          return Nome;
+      }
     
       void MostrarDados(){
        
@@ -32,6 +35,8 @@ class Cliente{
 class ContaBancaria{
     private String NumConta, Agencia, EntraSenha;
     private double SaldoInicial, SaldoFinal;
+    
+   
     
     void AcessarConta(){
         Agencia = JOptionPane.showInputDialog("Informe o número da sua Agencia Bancaria:");
@@ -55,9 +60,13 @@ class ContaBancaria{
         }
            else{
             this.SaldoFinal = this.SaldoInicial - ValorSacado;  
+            JOptionPane.showMessageDialog(null, "OPERAÇÃO REALIZADA COM SUCESSO");
            }
+           
        }
-    
+      void DadosConta(){
+          
+      }
 }
     
 
@@ -79,6 +88,4 @@ public class PrimeiraAva {
     }
     
 }
-
-
 
