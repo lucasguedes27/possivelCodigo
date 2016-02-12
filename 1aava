@@ -33,7 +33,7 @@ class Cliente{
 }
 
 class ContaBancaria{
-    private String NumConta, Agencia, EntraSenha;
+    private String NumConta, Agencia;
     private double SaldoInicial, SaldoFinal;
     
    
@@ -64,13 +64,17 @@ class ContaBancaria{
            }
            
        }
-      void DadosConta(){
-          
-      }
+       void Extrato (){
+           JOptionPane.showMessageDialog(null, "Agência:" + Agencia + "\nNúmero da Conta:" + NumConta + "\nSeu saldo é: R$" + SaldoFinal);
+       }
+      
+      
 }
     
 
 public class PrimeiraAva {
+
+    
 
     
     public static void main(String[] args) {
@@ -78,12 +82,16 @@ public class PrimeiraAva {
         Cliente NovoCliente = new Cliente();
         NovoCliente.CadastrarDados();
         NovoCliente.MostrarDados();
+        NovoCliente.getNome();
+        String DonoConta = NovoCliente.getNome();
         
         ContaBancaria MinhaConta = new ContaBancaria();
         MinhaConta.AcessarConta();
         MinhaConta.Deposito(0);
         MinhaConta.Saque(0);
-        
+        JOptionPane.showMessageDialog(null, "Cliente:" + DonoConta);
+        MinhaConta.Extrato();
+          
     
     }
     
