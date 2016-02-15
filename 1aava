@@ -90,7 +90,7 @@ class ContaBancaria{
       
        void Deposito(double ValorDepositado){
             ValorDepositado = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor do deposito: R$"));
-            this.SaldoFinal = this.SaldoInicial + ValorDepositado;
+            this.SaldoFinal = this.SaldoFinal + ValorDepositado;
            
        }
        void Saque(double ValorSacado){
